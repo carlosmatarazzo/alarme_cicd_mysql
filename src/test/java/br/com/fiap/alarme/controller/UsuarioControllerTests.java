@@ -10,6 +10,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
@@ -18,8 +19,10 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(UsuarioController.class)
+//@WebMvcTest(UsuarioController.class)
 @AutoConfigureMockMvc(addFilters = false)
+@WebMvcTest(controllers = UsuarioController.class)
+@ContextConfiguration(classes = {UsuarioController.class}) // ✅ força contexto mínimo necessário
 class UsuarioControllerTests {
 
     @Autowired
