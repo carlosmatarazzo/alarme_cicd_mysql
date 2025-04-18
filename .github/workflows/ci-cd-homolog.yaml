@@ -7,8 +7,8 @@ on:
       - homologacao
 
 env:
-  IMAGE_NAME_HOMOLOGACAO: alarme-cicd-mysql-hml # Nome da imagem para homologacao no Docker Hub
-  AZURE_WEBAPP_NAME_HOMOLOGACAO: alarme-cicd-app-hml # Nome do Web App de homologacao no Azure
+  IMAGE_NAME_HOMOLOGACAO: alarme-cicd-mysql-hml
+  AZURE_WEBAPP_NAME_HOMOLOGACAO: alarme-cicd-app-hml
 
 permissions:
   pull-requests: write
@@ -43,7 +43,7 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME_HOMOLOGACAO }}
-          publish-profile: ${{ secrets.AZURE_PROFILE_HOMOLOG }} # Novo Secret para o Web App de Homologacao
+          publish-profile: ${{ secrets.AZURE_PROFILE_HML }}
           images: 'ghcr.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME_HOMOLOGACAO }}:latest'
 
       - name: Comment on Pull Request to Producao

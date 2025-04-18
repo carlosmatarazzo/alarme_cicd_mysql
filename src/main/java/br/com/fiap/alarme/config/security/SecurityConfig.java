@@ -30,6 +30,22 @@ public class SecurityConfig {
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
+
+                        // Swagger liberado no topo da lista
+                        .requestMatchers(
+                                "/swagger-ui/**",
+                                "/swagger-ui.html",
+                                "/v3/api-docs/**",
+                                "/swagger-resources/**",
+                                "/webjars/**",                   // 🔧 necessário para assets do Swagger
+                                "/favicon.ico",
+                                "/error",
+                                "/api/teste"
+                        ).permitAll()
+
+                        // remover depois dos testes - necessário para rodar no browser
+                        .requestMatchers(HttpMethod.GET, "/api/usuarios").permitAll()
+
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
 
@@ -52,9 +68,6 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.DELETE, "/api/coleta/*").hasAnyRole("ADMIN", "USER")
                         .requestMatchers(HttpMethod.PUT, "/api/coleta").hasAnyRole("ADMIN", "USER")
                         .requestMatchers(HttpMethod.GET, "/api/coleta").hasAnyRole("ADMIN", "USER")
-
-                        // remover depois dos testes - necessário para rodar no browser
-                        .requestMatchers(HttpMethod.GET, "/api/usuarios").permitAll()
 
                         .anyRequest().authenticated()
 
