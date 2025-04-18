@@ -8,7 +8,7 @@ on:
 
 env:
   IMAGE_NAME_PRODUCAO: alarme-cicd-mysql-prd
-  AZURE_WEBAPP_NAME_PRODUCAO: alarme-cicd-mysql-prd
+  AZURE_WEBAPP_NAME_PRODUCAO: alarme-cicd-mysql-app-prd
 
 jobs:
   build_and_deploy:
