@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc(addFilters = false)
 @WebMvcTest(controllers = UsuarioController.class)
 @ContextConfiguration(classes = {UsuarioController.class}) // ✅ força contexto mínimo necessário
-@ActiveProfiles("test") // para resolver os testes no git hub actions
+//@ActiveProfiles("test") // para resolver os testes no git hub actions
 class UsuarioControllerTests {
 
     @Autowired
