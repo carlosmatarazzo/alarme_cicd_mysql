@@ -44,7 +44,8 @@ jobs:
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME_HOMOLOGACAO }}
           publish-profile: ${{ secrets.AZURE_PROFILE_HML }}
-          images: 'ghcr.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME_HOMOLOGACAO }}:latest'
+          # images: 'ghcr.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME_HOMOLOGACAO }}:latest'
+          images: '${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME_HOMOLOGACAO }}:latest'
 
       - name: Comment on Pull Request to Homologação
         uses: actions/github-script@v7
