@@ -16,15 +16,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Coleta {
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "SEQ_AL_COLETAS"
-    )
-    @SequenceGenerator(
-            name = "SEQ_AL_COLETAS",
-            sequenceName = "SEQ_AL_COLETAS",
-            allocationSize = 1
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "COLETA_ID")
     private Long coletaId;
 

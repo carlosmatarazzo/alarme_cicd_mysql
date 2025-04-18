@@ -1,5 +1,4 @@
 package br.com.fiap.alarme.model;
-
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,15 +11,7 @@ import lombok.*;
 public class Recipiente {
 
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "SEQ_AL_RECIPIENTES"
-    )
-    @SequenceGenerator(
-            name = "SEQ_AL_RECIPIENTES",
-            sequenceName = "SEQ_AL_RECIPIENTES",
-            allocationSize = 1
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "RECIPIENTE_ID")
     private Long recipienteId;
 
