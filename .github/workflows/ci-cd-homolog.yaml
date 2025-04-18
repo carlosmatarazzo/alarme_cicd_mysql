@@ -4,7 +4,7 @@ on:
   pull_request:
     types: [closed] # Executa quando o PR para homologacao é merged
     branches:
-      - homologacao
+      - homolog
 
 env:
   IMAGE_NAME_HOMOLOGACAO: alarme-cicd-mysql-hml
