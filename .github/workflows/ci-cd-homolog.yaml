@@ -8,7 +8,7 @@ on:
 
 env:
   IMAGE_NAME_HOMOLOGACAO: alarme-cicd-mysql-hml
-  AZURE_WEBAPP_NAME_HOMOLOGACAO: alarme-cicd-app-hml
+  AZURE_WEBAPP_NAME_HOMOLOGACAO: alarme-cicd-mysql-app-hml
 
 permissions:
   pull-requests: write
