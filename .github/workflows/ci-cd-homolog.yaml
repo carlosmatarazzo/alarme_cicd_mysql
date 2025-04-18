@@ -7,8 +7,8 @@ on:
       - homologacao
 
 env:
-  IMAGE_NAME_HOMOLOGACAO: alarme_cicd_homolog # Nome da imagem para homologacao no Docker Hub
-  AZURE_WEBAPP_NAME_HOMOLOGACAO: alarme-cicd-homlog # Nome do Web App de homologacao no Azure
+  IMAGE_NAME_HOMOLOGACAO: alarme-cicd-mysql-hml # Nome da imagem para homologacao no Docker Hub
+  AZURE_WEBAPP_NAME_HOMOLOGACAO: alarme-cicd-app-hml # Nome do Web App de homologacao no Azure
 
 permissions:
   pull-requests: write

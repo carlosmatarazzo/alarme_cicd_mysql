@@ -15,15 +15,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Deposito {
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "SEQ_AL_DEPOSITOS"
-    )
-    @SequenceGenerator(
-            name = "SEQ_AL_DEPOSITOS",
-            sequenceName = "SEQ_AL_DEPOSITOS",
-            allocationSize = 1
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "DEPOSITO_ID")
     private Long depositoId;
 

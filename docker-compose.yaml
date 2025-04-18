@@ -1,18 +1,21 @@
 version: '3.8'
 
 services:
-  web:
-    build:
-      context: .
-      dockerfile: Dockerfile
+
+  db:
+    container_name: mysql
+    image: "mysql"
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_pass
+
+  api:
+    build: .
     ports:
       - "8080:8080"
-    # environment:
-    # Defina variáveis de ambiente para sua aplicação aqui, se necessário
-    # SPRING_PROFILES_ACTIVE: docker
-    networks:
-      - app-network
-
-networks:
-  app-network:
-    driver: bridge
+    environment:
+      - PROFILE=hml
+      - DATABASE_URL=jdbc:mysql://alarme-cicd-mysql-hml.mysql.database.azure.com:3006/api?createDatabaseIfNotExist=true
+      - DATABASE_USER=root
+      - DATABASE_PWD=root_pass

@@ -16,15 +16,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Notificacao {
     @Id
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "SEQ_AL_NOTIFICACOES"
-    )
-    @SequenceGenerator(
-            name = "SEQ_AL_NOTIFICACOES",
-            sequenceName = "SEQ_AL_NOTIFICACOES",
-            allocationSize = 1
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "NOTIFICACAO_ID")
     private Long notificacaoId;
 

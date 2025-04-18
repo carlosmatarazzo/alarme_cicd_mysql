@@ -7,8 +7,8 @@ on:
       - main
 
 env:
-  IMAGE_NAME_PRODUCAO: alarme_cicd # Nome da imagem para producao no Docker Hub (pode ser o mesmo de antes se desejar sobrescrever)
-  AZURE_WEBAPP_NAME_PRODUCAO: alarme-cicd # Nome do Web App de producao no Azure (o mesmo de antes)
+  IMAGE_NAME_PRODUCAO: alarme-cicd-mysql-prd # Nome da imagem para producao no Docker Hub (pode ser o mesmo de antes se desejar sobrescrever)
+  AZURE_WEBAPP_NAME_PRODUCAO: alarme-cicd-mysql-prd # Nome do Web App de producao no Azure (o mesmo de antes)
 
 jobs:
   build_and_deploy:
