@@ -3,16 +3,9 @@ RUN mkdir /opt/app
 COPY . /opt/app
 WORKDIR /opt/app
 RUN mvn clean package -DskipTests
-
 FROM eclipse-temurin:21-jre-alpine
 RUN mkdir /opt/app
 COPY --from=build /opt/app/target/alarme-0.0.1-SNAPSHOT.jar /opt/app/app.jar
 WORKDIR /opt/app
-
-#ENV PROFILE=prd
-
 EXPOSE 8080
-
-#ENTRYPOINT ["java", "-jar", "app.jar"]
-ENTRYPOINT ["java", "-Dspring.profiles.active=${PROFILE}", "-jar", "app.jar"]
-#ENTRYPOINT ["java", "-Dspring.profiles.active=${SPRING_PROFILES_ACTIVE}", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-Dspring.profiles.active=${SPRING_PROFILES_ACTIVE}", "-jar", "app.jar"]
