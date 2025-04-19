@@ -3,7 +3,7 @@
 # Objetivo
 Esta aplicação tem o objetivo de ajudar a gerenciar a coleta de resíduos disparando notificações quando os recipientes atingem suas capacidades totais.
 
-# API de Controle de Resíduos
+# API de Controle de Resíduos.
 API para gestão de controle de resíduos em cidades inteligentes.
 As APIs disponibilizadas neste projeto permitem o cadastro de:
 - Recipientes: locais onde os resíduos são depositados;
