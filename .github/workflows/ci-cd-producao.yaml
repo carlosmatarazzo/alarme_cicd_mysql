@@ -10,6 +10,9 @@ env:
   IMAGE_NAME_PRODUCAO: alarme-cicd-mysql-prd
   AZURE_WEBAPP_NAME_PRODUCAO: alarme-cicd-mysql-app-prd
 
+permissions:
+  pull-requests: write
+
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
@@ -29,7 +32,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build Docker Image (Opcional - se houver commits diretamente em main)
+      - name: Build Docker Image
         uses: docker/build-push-action@v6
         with:
           push: true
@@ -42,3 +45,20 @@ jobs:
           app-name: ${{ env.AZURE_WEBAPP_NAME_PRODUCAO }}
           publish-profile: ${{ secrets.AZURE_PROFILE_PRD }}
           images: '${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME_PRODUCAO }}:latest'
+
+      - name: Comment on Pull Request to Producao
+        uses: actions/github-script@v7
+        if: ${{ success() }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const owner = context.repo.owner
+            const repo = context.repo.repo
+            const pull_number = context.payload.pull_request.number
+
+            await github.rest.issues.createComment({
+              owner: owner,
+              repo: repo,
+              issue_number: pull_number,
+              body: 'Deploy para Produção realizado com sucesso.'
+            })
