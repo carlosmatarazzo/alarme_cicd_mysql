@@ -7,8 +7,8 @@ on:
       - main
 
 env:
-  IMAGE_NAME_PRODUCAO: alarme_cicd # Nome da imagem para producao no Docker Hub (pode ser o mesmo de antes se desejar sobrescrever)
-  AZURE_WEBAPP_NAME_PRODUCAO: alarme-cicd # Nome do Web App de producao no Azure (o mesmo de antes)
+  IMAGE_NAME_PRODUCAO: alarme-cicd-mysql-prd
+  AZURE_WEBAPP_NAME_PRODUCAO: alarme-cicd-mysql-app-prd
 
 jobs:
   build_and_deploy:
@@ -40,5 +40,5 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME_PRODUCAO }}
-          publish-profile: ${{ secrets.AZURE_PROFILE }} # Mesmo Secret de antes
+          publish-profile: ${{ secrets.AZURE_PROFILE_PRD }}
           images: 'ghcr.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME_PRODUCAO }}:latest'

@@ -4,11 +4,11 @@ on:
   pull_request:
     types: [closed] # Executa quando o PR para homologacao é merged
     branches:
-      - homologacao
+      - homolog
 
 env:
-  IMAGE_NAME_HOMOLOGACAO: alarme_cicd_homolog # Nome da imagem para homologacao no Docker Hub
-  AZURE_WEBAPP_NAME_HOMOLOGACAO: alarme-cicd-homlog # Nome do Web App de homologacao no Azure
+  IMAGE_NAME_HOMOLOGACAO: alarme-cicd-mysql-hml
+  AZURE_WEBAPP_NAME_HOMOLOGACAO: alarme-cicd-mysql-app-hml
 
 permissions:
   pull-requests: write
@@ -43,10 +43,11 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME_HOMOLOGACAO }}
-          publish-profile: ${{ secrets.AZURE_PROFILE_HOMOLOG }} # Novo Secret para o Web App de Homologacao
-          images: 'ghcr.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME_HOMOLOGACAO }}:latest'
+          publish-profile: ${{ secrets.AZURE_PROFILE_HML }}
+          # images: 'ghcr.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME_HOMOLOGACAO }}:latest'
+          images: '${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME_HOMOLOGACAO }}:latest'
 
-      - name: Comment on Pull Request to Producao
+      - name: Comment on Pull Request to Homologação
         uses: actions/github-script@v7
         if: ${{ success() }}
         with:
