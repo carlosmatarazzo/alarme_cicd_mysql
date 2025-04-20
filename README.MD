@@ -12,7 +12,7 @@ As APIs disponibilizadas neste projeto permitem o cadastro de:
 - Coleta: ação de coletar o resíduo e esvaziar o recipiente. 
 
 # Segurança
-O acesso às APIs requer autenticação Bearer cujo token é obtido com o login de um usuário.
+O acesso às APIs requer autenticação Bearer, cujo token é obtido com o login de um usuário.
 
 # Tecnologias
 - Java 21
