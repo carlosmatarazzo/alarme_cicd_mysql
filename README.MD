@@ -1,4 +1,4 @@
-18/04/2025
+20/04/2025
 
 # Objetivo
 Esta aplicação tem o objetivo de ajudar a gerenciar a coleta de resíduos disparando notificações quando os recipientes atingem suas capacidades totais.
@@ -30,6 +30,11 @@ mvn clean package
 # Testes
 ```
 ./mvnw test
+```
+
+# Docker
+```
+docker compose up
 ```
 
 # Métodos API
