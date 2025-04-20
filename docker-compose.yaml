@@ -1,21 +1,35 @@
-version: '3.8'
+#version: '3.8'
 
 services:
-
   db:
     container_name: mysql
     image: "mysql"
     ports:
-      - "3306:3306"
+      - "3307:3306" # externo:interno
     environment:
       - MYSQL_ROOT_PASSWORD=root_pass
+      - MYSQL_DATABASE=api
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   api:
     build: .
     ports:
       - "8080:8080"
     environment:
-      - PROFILE=hml
-      - DATABASE_URL=jdbc:mysql://alarme-cicd-mysql-hml.mysql.database.azure.com:3006/api?createDatabaseIfNotExist=true
+      - SPRING_PROFILES_ACTIVE=dev-docker
+      - DATABASE_URL=jdbc:mysql://db:3306/api?createDatabaseIfNotExist=true
       - DATABASE_USER=root
       - DATABASE_PWD=root_pass
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: on-failure
+
+volumes:
+  mysql_data:
