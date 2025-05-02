@@ -1,0 +1,10 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": ["coletaId", "recipienteId", "data"],
+  "properties": {
+    "coletaId": { "type": "integer" },
+    "recipienteId": { "type": "integer" },
+    "data": { "type": "string", "format": "date" }
+  }
+}

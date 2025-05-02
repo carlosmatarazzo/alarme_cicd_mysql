@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": ["depositoId", "recipienteId", "peso", "data"],
+  "properties": {
+    "depositoId": { "type": "integer" },
+    "recipienteId": { "type": "integer" },
+    "peso": { "type": "integer" },
+    "data": { "type": "string", "format": "date" }
+  }
+}

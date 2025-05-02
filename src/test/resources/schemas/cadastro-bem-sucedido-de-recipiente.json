@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "required": ["recipienteId", "tipo", "capacidadeTotal", "localizacao", "capacidadeAtual"],
+  "properties": {
+    "recipienteId": { "type": "integer" },
+    "tipo": { "type": "string" },
+    "capacidadeTotal": { "type": "integer" },
+    "capacidadeAtual": { "type": "integer" },
+    "localizacao": { "type": "string" }
+  }
+}
