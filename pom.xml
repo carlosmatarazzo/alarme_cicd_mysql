@@ -2,16 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-<!--	<parent>-->
-<!--		<groupId>org.springframework.boot</groupId>-->
-<!--		<artifactId>spring-boot-starter-parent</artifactId>-->
-<!--		<version>3.3.4</version>-->
-<!--		<relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
-<!--	</parent>-->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.1.4</version> <!-- ✅ FUNCIONA com springdoc 2.2.0 -->
+		<version>3.1.4</version>
 	</parent>
 	<groupId>br.com.fiap</groupId>
 	<artifactId>alarme</artifactId>
@@ -64,9 +58,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-<!--			<optional>true</optional>-->
 		</dependency>
-		<!--Para resolver o teste no git hub actions-->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
@@ -114,6 +106,11 @@
 		</dependency>
 		<!-- Cucumber Junit -->
 		<dependency>
+			<groupId>org.junit.vintage</groupId>
+			<artifactId>junit-vintage-engine</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-junit</artifactId>
 			<version>7.18.1</version>
@@ -152,7 +149,9 @@
 				<version>3.0.0-M5</version>
 				<configuration>
 					<includes>
-						<include>**/TestRunner.java</include>
+						<include>**/*Test*.java</include>
+						<include>**/*Tests*.java</include>
+						<include>**/*Runner*.java</include>
 					</includes>
 				</configuration>
 			</plugin>
